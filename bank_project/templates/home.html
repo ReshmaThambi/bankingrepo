@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    <title>Home</title>
+    <style>
+        body{
+         background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/08/Desktop-Best-And-Website-background-2560x1600.jpg');
+         }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">FMC Bank</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                  <li>Hello {{user.username}}</li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+                </li>
+                  {% else %}
+                 <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Branches
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Palakkad">Palakkad</a></li>
+                      <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Malappuram">Malappuram</a></li>
+                      <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Ernakulam">Ernakulam</a></li>
+                      <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Thrissur">Thrissur</a></li>
+                       <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Wayanad_district">Wayanad</a></li>
+
+                  </ul>
+                </li>
+
+
+            {% endif %}
+              </ul>
+
+            </div>
+
+          </div>
+    </nav>
+<br>
+<center><img src="{% static 'images/FMC.jpeg' %}" width="200" height="100"></center>
+<!--home page setting-->
+<!--    <a class="btn btn-secondary" href="{% url 'login' %}">Click here to Login</a><br>-->
+<center>
+    <h2><b><u>About Us</u></b></h2>
+    <div class="container-fluid">
+    <h4><b><i>We Solve Your Financial Problem</i></b></h4>
+   <p align="justify">FBC is an Indian multinational public sector bank and financial services statutory body headquartered in Mumbai, Maharashtra. FBC is the 484th largest bank in the world by total assets and ranked 21st in the Fortune &nbsp; Global 500 list of the world's biggest corporations of 2020, being the only Indian bank on the list.[10] It is a public sector bank and the largest bank in India[11] with a 23% market share by assets and a 25% share of the total loan and deposits market.[12] It is also the fifth largest employer in India with nearly 250,000 employees.[13][14][15] On 14 September 2022, FBC became the third lender (after HDFC Bank and ICICI Bank).The bank descends from the Bank of Calcutta, founded in 1806 via the Imperial Bank of India, making it the oldest commercial bank in the Indian subcontinent. The Bank of Madras merged into the other two presidency banks in British India, the Bank of Calcutta and the Bank of Bombay, to form the Imperial Bank of India, which in turn became the State Bank of India in 1955.[17] Overall the bank has been formed from the merger and acquisition of more than twenty banks over the course of its 200 year history.[18][19] The Government of India took control of the Imperial Bank of India in 1955, with Reserve Bank of India (India's central bank) taking a 60% stake, renaming it State Bank of India.
+
+On 16th Aug 2022 an attempt to facilitate and support start-ups in the country, the State Bank of India (SBI) announced the launch of its first "state-of-the-art" dedicated branch for start-ups in the country in Bengaluru.[20]
+    </p>
+        </div>
+    <div class="team">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+                    <div class="section_title"><h2><i>Meet the Team</i></h2></div><br>
+				</div>
+			</div>
+		<div class="row team_row">
+
+				<!-- Team Item -->
+				{% for i in result1 %}
+				<div class="col-xl-3 col-md-6 team_col">
+					<div class="team_item d-flex flex-column align-items-center justify-content-start text-center">
+                        <div class="team_image"><img src="{{i.img1.url}}" alt="" width="250" height="250" ></div>
+                        <div class="team_content">
+                            <div class="team_title"><b>{{i.name1}}</b></div>
+							<div class="team_text">
+								<p>{{i.desc1}}</p>
+                                <p>{{i.phno1}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+            	</div>
+		</div>
+	</div>
+<br>
+    <br>
+
+
+
+<!--    services-->
+
+    <div class="services">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+                    <div class="section_title"><h2><i>Our Services</i></h2></div><br>
+				</div>
+			</div>
+		<div class="row services_row">
+        <!-- Team Item -->
+				{% for i in result %}
+				<div class="col-xl-3 col-md-6 team_col">
+					<div class="team_item d-flex flex-column align-items-center justify-content-start text-center">
+
+						<div class="team_content">
+                            <div class="team_image"><img src="{{i.img.url}}" alt="" width="250" height="250" ></div>
+                            <br>
+                            <div class="team_title"><b>{{i.service}}</b></div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+            	</div>
+		</div>
+	</div>
+
+</center>
+    <br>
+<div class="footer navbar-fixed-bottom my_footer">
+  <p class="text-center my_footer p">&nbsp;&nbsp;&nbsp;
+     &copy; FMC Bank PVT limited All Rights Reserved
+  </p>
+</div>
+
+</body>
+</html>

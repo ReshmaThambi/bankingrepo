@@ -1,0 +1,35 @@
+<center>
+    <div class="container-fluid">
+        <h1>Login</h1>
+        <form method="POST">
+            {% csrf_token %}
+          <input type="text" name="username" placeholder="Username"><br>
+          <input type="password" name="password" placeholder="Password"><br><br>
+          <input type="Submit"><br>
+          <a href="{% url 'register' %}">New user?? Register</a>
+        </form>
+        {% for msg in messages %}
+            <h2>{{msg}}</h2>
+        {% endfor %}
+    </div>
+</center>
+
+
+
+<body>
+<div class="container-fluid">
+    <h4> REGISTRATION</h4>
+    <form method="POST">
+        {%csrf_token %}
+        <input type="text" name="username" placeholder="Enter your username" required><br>
+        <input type="password" name="password" placeholder="Enter your password" required><br>
+        <input type="password" name="password1" placeholder="reenter your password" required><br><br>
+        <input type="Submit">
+    </form>
+
+    {% for msg in messages %}
+    {{msg}}
+    {% endfor %}
+</div>
+
+</body>
